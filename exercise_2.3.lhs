@@ -1,6 +1,5 @@
 \documentclass{article}
 %include lhs2TeX.fmt
-\usepackage{amsmath}
 \begin{document}
 \textbf{Exercise 2.3}
 Inserting an existing element into a binary search tree copies the entire
