@@ -7,8 +7,11 @@ search path even though the copied nodes are indistinguishable from the
 originals. Rewrite @insert@ using exceptions to avoid this copying. Establish
 only one handler per insertion rather than one handler per iteration.
 
-% For some reason, <- is being typesetted as \in (∈). Use left arrow instead:
+%if style == tt
 %format <- = "$\gets$"
+%else
+%format <- = "\gets"
+%endif
 
 \begin{code}
 import Data.Maybe (fromMaybe)
@@ -20,14 +23,14 @@ data Tree a = Empty
 insert :: (Ord a) => a -> Tree a -> Tree a
 insert x t = fromMaybe t (insert' t)
   where
-    insert' Empty = Just (Tree Empty x Empty)
-    insert' s@(Tree a y b) = do
+    insert' Empty           = Just (Tree Empty x Empty)
+    insert' s@(Tree a y b)  = do
       a' <- insert' a
       b' <- insert' b
       if x < y
-        then return (Tree a' y b)
+        then return $ Tree a' y b
         else if x > y
-          then return (Tree a y b')
+          then return $ Tree a y b'
           else return s
 \end{code}
 \end{document}

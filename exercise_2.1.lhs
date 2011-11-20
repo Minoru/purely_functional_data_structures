@@ -12,8 +12,8 @@ decreasing order of length. For example,
 suffixes :: [a] -> [[a]]
 suffixes l@(_:xs) = helper [l] xs
   where
-    helper acc []       = acc ++ [[]]
-    helper acc y@(_:ys) = helper (acc ++ [y]) ys
+    helper acc []        = acc ++ [[]]
+    helper acc y@(_:ys)  = helper (acc ++ [y]) ys
 \end{code}
 \end{document}
 

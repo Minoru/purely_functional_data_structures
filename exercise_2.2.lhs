@@ -10,8 +10,8 @@ $\leq$ returned true) and checking for equality only when you hit the bottom of
 the tree.
 
 \begin{code}
-data Tree a = Empty
-            | Tree (Tree a) a (Tree a)
+data Tree a  =  Empty
+             |  Tree (Tree a) a (Tree a)
   deriving Show
 
 member :: (Ord a, Show a) => a -> Tree a -> Bool
@@ -25,8 +25,8 @@ member = member' Empty
         else True
     member' l x t@(Tree a y b) =
       if x < y
-        then member' l x a
-        else member' t x b
+        then  member' l x a
+        else  member' t x b
     member' l x Empty = member' l x l
 \end{code}
 \end{document}
