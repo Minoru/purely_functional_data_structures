@@ -18,18 +18,18 @@ that performs no unnecessary copying and uses no more than $d + 1$ comparisons.
 import Data.Maybe (fromMaybe)
 
 class Set s a where
-  empty  :: s a
-  insert :: a -> s a -> s a
-  member :: a -> s a -> Bool
+  empty    :: s a
+  insert   :: a -> s a -> s a
+  member   :: a -> s a -> Bool
 
-data Tree a  =  Empty
-             |  Tree (Tree a) a (Tree a)
+data Tree a   =  Empty
+              |  Tree (Tree a) a (Tree a)
   deriving Show
 
 instance Ord a => Set Tree a where
   empty = Empty
 
-  insert x Empty           = Tree Empty x Empty
+  insert x Empty = Tree Empty x Empty
   insert x t = fromMaybe t (insert' Empty t)
     where
       insert' Empty         Empty  = Just (Tree Empty x Empty)

@@ -13,12 +13,12 @@ the tree.
 {-# LANGUAGE MultiParamTypeClasses, FlexibleInstances #-}
 
 class Set s a where
-  empty  :: s a
-  insert :: a -> s a -> s a
-  member :: a -> s a -> Bool
+  empty    :: s a
+  insert   :: a -> s a -> s a
+  member   :: a -> s a -> Bool
 
-data Tree a  =  Empty
-             |  Tree (Tree a) a (Tree a)
+data Tree a   =  Empty
+              |  Tree (Tree a) a (Tree a)
   deriving Show
 
 instance Ord a => Set Tree a where
