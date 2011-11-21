@@ -26,11 +26,11 @@ insert x t@(Tree a y b)  = fromMaybe t (insert' Empty t)
     insert' Empty           Empty  = Just (Tree Empty x Empty)
     insert' l@(Tree a z b)  Empty  = 
       if x /= z
-        then Just (Tree Empty x Empty)
-        else Just Empty
     insert' l s@(Tree a y b) = do
       a' <- insert' l a
       b' <- insert' s b
+        then  Just (Tree Empty x Empty)
+        else  Nothing
       if x < y
         then  return $ Tree a' y b
         else  return $ Tree a y b'
