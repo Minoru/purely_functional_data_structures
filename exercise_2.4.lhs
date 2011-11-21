@@ -21,19 +21,21 @@ data Tree a  =  Empty
 
 insert :: (Ord a) => a -> Tree a -> Tree a
 insert x Empty           = Tree Empty x Empty
-insert x t@(Tree a y b)  = fromMaybe t (insert' Empty t)
+insert x t = fromMaybe t (insert' Empty t)
   where
-    insert' Empty           Empty  = Just (Tree Empty x Empty)
-    insert' l@(Tree a z b)  Empty  = 
+    insert' Empty         Empty  = Just (Tree Empty x Empty)
+    -- fallback
+    insert' (Tree l z r)  Empty  = 
       if x /= z
-    insert' l s@(Tree a y b) = do
-      a' <- insert' l a
-      b' <- insert' s b
         then  Just (Tree Empty x Empty)
         else  Nothing
+    -- usual case
+    insert' p s@(Tree l y r) = do
+      l'  <- insert' p l
+      r'  <- insert' s r
       if x < y
-        then  return $ Tree a' y b
-        else  return $ Tree a y b'
+        then  return $ Tree  l'  y  r
+        else  return $ Tree  l   y  r'
 \end{code}
 \end{document}
 
