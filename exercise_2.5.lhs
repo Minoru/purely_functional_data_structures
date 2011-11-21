@@ -53,7 +53,11 @@ complete2 x n
                    in   (j, k)
 \end{code}
 
-\emph{I'm not pleased with this solution, because subtrees of subtrees of node
+\emph{Algorithm have time complexity of $O(\log n)$ because it's recursive and
+number of recursive calls equals to depth of the tree, which happens to be in
+the range of $((\log n)-1, \log n]$.}
+
+\emph{I'm not pleased with this solution because subtrees of subtrees of node
 can't share elements.}
 
 \end{enumerate}
