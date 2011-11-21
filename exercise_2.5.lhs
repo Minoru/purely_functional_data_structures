@@ -60,6 +60,25 @@ the range of $((\log n)-1, \log n]$.}
 \emph{I'm not pleased with this solution because subtrees of subtrees of node
 can't share elements.}
 
+\begin{code}
+complete3 :: a -> Int -> Tree a
+complete3 x n = nodes !! n
+  where
+    nodes = Empty : map mkNode [1..]
+    mkNode i =  let  l  = nodes !! k
+                     r  = nodes !! m
+                     k  = (  (i-1) `div` 2  ) + (  (i-1) `mod` 2  )
+                     m  =    (i-1) `div` 2
+                in   Tree l x r
+\end{code}
+
+\emph{By this one I'm not only pleased~--- I am \textbf{proud} of it. @nodes@
+is a list of binary trees of every possible size built in a way that each
+subsequent tree uses some previously built trees as its subtrees.}
+
+\emph{That implementation was easy to come up with once I realized that to
+build tree of size $n$ you need two subtrees of sizes $k$ and $m$, $|k - m|
+\leq 1$.}
 \end{enumerate}
 \end{document}
- 
+
