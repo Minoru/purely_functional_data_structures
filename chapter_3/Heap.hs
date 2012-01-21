@@ -1,3 +1,5 @@
+module Heap where
+
 class Heap h where
   empty    ::  Ord a => h a
   isEmpty  ::  Ord a => h a -> Bool
