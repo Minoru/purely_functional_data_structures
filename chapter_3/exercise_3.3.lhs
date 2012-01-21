@@ -1,7 +1,7 @@
 \documentclass{article}
 %include lhs2TeX.fmt
 \begin{document}
-\textbf{Exercise 3.2}
+\textbf{Exercise 3.3}
 Implement a function @fromList@ of type @a -> Heap@ that produces a leftist heap from an unordered list of elements by first converting each element into singleton heap and then merging the heaps until only one heap remains.
 Instead of merging the heaps in one right-to-left or left-to-right pass using @foldr@ or @foldl@, merge the heaps in $\lceil \log n \rceil$ passes, where each pass marges adjacent pairs of heaps.
 Show that @fromList@ takes only $O(n)$ time.
